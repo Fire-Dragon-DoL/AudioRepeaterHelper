@@ -22,7 +22,6 @@ InitConfig:
 Return
 
 LoadConfig:
-  MsgBox %ConfigFilePath%
   IniRead AudioRepeaterPath , %ConfigFilePath% , AudioRepeater , Path , D:\Program Files\Virtual Audio Cable\audiorepeater.exe
   IniRead AudioRepeaterInput , %ConfigFilePath% , AudioRepeater , InputDevice , Speakers (2- Sirus Headset)
   IniRead AudioRepeaterOutput , %ConfigFilePath% , AudioRepeater , OutputDevice , Altoparlanti (XSplit Stream A 
@@ -32,7 +31,6 @@ LoadConfig:
     Hotkey %ToggleHotkey%, OnToggleAudioRepeater
   }
   AudioRepeaterWithParams = %AudioRepeaterPath% /AutoStart /Input:"%AudioRepeaterInput%" /Output:"%AudioRepeaterOutput%"
-  MsgBox %AudioRepeaterWithParams%
 Return
 
 OnToggleAudioRepeater:
@@ -46,7 +44,6 @@ ToggleAudioRepeater()
 
   If (AudioRepeaterPID = (-1)) {
     Run %AudioRepeaterWithParams%,, Min, AudioRepeaterPID
-    MsgBox %AudioRepeaterPID%
   } Else {
     Process Close, %AudioRepeaterPID%
   }
