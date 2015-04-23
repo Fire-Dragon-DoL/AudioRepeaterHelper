@@ -46,6 +46,7 @@ ToggleAudioRepeater()
     Run %AudioRepeaterWithParams%,, Min, AudioRepeaterPID
   } Else {
     Process Close, %AudioRepeaterPID%
+    AudioRepeaterPID := (-1)
   }
 
   Return
